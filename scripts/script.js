@@ -3,6 +3,7 @@ let class_indices;
 let fileUpload = document.getElementById('uploadImage')
 let img = document.getElementById('image')
 let boxResult = document.querySelector('.box-result')
+let Global;
 
 
 let progressBar = 
@@ -27,14 +28,27 @@ async function fetchData(){
 // Initialize/Load model
 async function initialize() {
     let status = document.querySelector('.init_status')
-    status.innerHTML = 'Loading Model .... <span class="fa fa-spinner fa-spin"></span>'
+    status.innerHTML = 'Cargando modelo .... <span class="fa fa-spinner fa-spin"></span>'
     console.log("ME")   
     model = await tf.loadLayersModel('./tensorflowjs-model/model.json');
     console.log("CAGO")
    
-    status.innerHTML = 'Model Loaded Successfully  <span class="fa fa-check"></span>'
+    status.innerHTML = 'Modelo cargado exitosamente  <span class="fa fa-check"></span>'
     
 }
+
+async function Download() { 
+    //Creating a download for the image with the clasification
+    let img = document.getElementById('image')
+    let imgPath = image.getAttribute('src')
+    fetchData().then((data)=> 
+        {
+        imgName = tf.argMax(prediction)
+        }
+    );
+    saveAs(imgPath, imgName)
+}
+
 
 async function predict() {
     // Function for invoking prediction
@@ -44,7 +58,7 @@ async function predict() {
     let tensorImg_scaled = tensorImg.div(offset)
     prediction = await model.predict(tensorImg_scaled).data();
 
-    fetchData().then((data)=> 
+    await fetchData().then((data)=> 
         {
             predicted_class = tf.argMax(prediction)
 
@@ -61,6 +75,7 @@ async function predict() {
         }
     );
 
+    return document.querySelector('.pred_class').innerHTML;
 }
 
 
@@ -73,9 +88,14 @@ fileUpload.addEventListener('change', function(e){
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.addEventListener("load", function(){
-
+        
             img.setAttribute('src', this.result);
         });
+        console.log(file);
+        reader.onloadend = function(){
+            Global = reader.result
+            console.log(Global);
+        }
     }
 
     else{
@@ -83,7 +103,13 @@ fileUpload.addEventListener('change', function(e){
     }
 
     initialize().then( () => {
-        predict()
+        predict().then((Name)=>{
+            var DownloadLink = document.getElementById("DownloadLink")
+            DownloadLink.href = Global
+            DownloadLink.download = Name
+        });
+        //file.Name = Name + ".jpg"
+       
     }).catch(err => {
         console.log(err)
     })

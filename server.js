@@ -3,7 +3,8 @@ const cors = require('cors')
 
 var app = express();
 app.use(cors());
-const PORT = 3000;
+const PORT = process.env.PORT || 8008
+
 app.use(express.static(__dirname));
 
 app.listen(PORT,function(){

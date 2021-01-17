@@ -20,11 +20,10 @@ app.listen(PORT,function(){
 })
 
 app.get('/', function(req, res) {
-    res.sendFile('index.html    ', { root: __dirname });
+    res.sendFile('index.html', { root: __dirname });
 });
 
-app.put('/get-disease', function(req, res){
-    console.log(req)
+app.post('/get-disease', function(req, res){
     const { imageFile } = req.body;
     try{
         console.log(imageFile);

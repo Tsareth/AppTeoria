@@ -24,7 +24,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/get-disease', function(req, res){   
-    console.log(req.headers)
+    console.log(req)
     const { imageFile } = req.params;
     try{
         console.log(imageFile);

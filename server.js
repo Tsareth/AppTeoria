@@ -23,8 +23,9 @@ app.get('/', function(req, res) {
     res.sendFile('index.html', { root: __dirname });
 });
 
-app.post('/get-disease', function(req, res){
-    const { imageFile } = req.body;
+app.post('/get-disease', function(req, res){   
+    console.log(req.headers)
+    const { imageFile } = req.params;
     try{
         console.log(imageFile);
         return res.json({success: true})

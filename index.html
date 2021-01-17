@@ -5,18 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PLANT DISEASE CLASSIFIER</title>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--     Loads the external CSS stylesheet for the webpage -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a class="github-fork-ribbon" href="https://url.to-your.repo" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
-    <h1>Proyecto Procesamiento digital de señales: Identificador de enfermedades de plantas <span class="fa fa-leaf"></span></h1>
+    <!-- <a class="github-fork-ribbon" href="https://url.to-your.repo" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a> -->
+    
+    
+    <h1>Proyecto PDS </h1>
+
+    <div style="text-align:center;">
+        <img src="tomate.jpeg" alt="tomate" style="width:75px;height:75px">
+    </div>
+
+    <h2>Identificador de enfermedades en plantas </h2>
     <hr>
 
+   
+    
+    
+
     <!-- Input element for uploading Image files (accepted extensions = .png, .jpg, .jpeg) -->
-    <input type="file" name="uploadImage" id="uploadImage" accept=".png, .jpg, .jpeg">
+    <div style="text-align:center;">
+        <input type="file" name="uploadImage" id="uploadImage" accept=".png, .jpg, .jpeg">
+        
+    </div>
+    
+    <!--<input type="file" name="uploadImage" id="uploadImage" accept=".png, .jpg, .jpeg"> -->
+
+
     <div class="row">
         <div class="box">
             <!-- Image Box which displays the Uploaded image -->
@@ -27,7 +47,7 @@
             <!--  Simple div which shows the Model Loading Status  -->
             <div class="init_status"></div>
             <div>
-                <h2>Su planta está infectada con :- <span class="pred_class"></span></h2>
+                <h3>La planta está infectada con :- <span class="pred_class"></span></h3>
                 
             </div>
             <div class="accuracy">
@@ -36,10 +56,26 @@
                     <div class="inner">
                       
                     </div>
+                    
                   </div>
             </div>
+            <br/>
+            <div style="text-align:center;">
+                <a href= "" id= "DownloadLink" download="">
+                    <button type="button" >Download!</button>
+                </a >
+            </div>
         </div>
+        
     </div>
+
+    
+
+    <h4>Desarrollado por:</h4>
+    <h4>Natalia Gil</h4>
+    <h4>Armando Uribe</h4>
+    <h4>Jervis Villalobos</h4>
+    <h4>Luigi Giacomin</h4>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.0.1/tf.min.js"></script>
